@@ -13,9 +13,11 @@ const DeleteForm: React.FC<Props> = ({ isModalOpen, onClose, id }) => {
   const { mutate: deleteUser, isLoading } = useDeleteUser();
 
   const handleDelete = async () => {
-    await deleteUser(id)
-    onClose()
-  }
+    if (id) {
+      await deleteUser(id);
+      onClose();
+    }
+  };
 
   return (
     <ModalComponent
@@ -23,10 +25,14 @@ const DeleteForm: React.FC<Props> = ({ isModalOpen, onClose, id }) => {
       onClose={onClose}
       title="Delete User"
     >
-      <span className="text-sm font-medium">Are you sure to delete this user?</span>
+      <span className="text-sm font-medium">
+        Are you sure to delete this user?
+      </span>
       <div className="flex justify-end gap-2 mt-3">
-        <Button type="primary" danger onClick={onClose}>Cancel</Button>
-        <Button htmlType="submit"  onClick={handleDelete} loading={isLoading}>
+        <Button type="primary" danger onClick={onClose}>
+          Cancel
+        </Button>
+        <Button htmlType="submit" onClick={handleDelete} loading={isLoading}>
           Confirm
         </Button>
       </div>

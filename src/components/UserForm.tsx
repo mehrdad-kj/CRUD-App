@@ -5,6 +5,12 @@ import { useAddUser } from "../hooks/useAddUser";
 import { useGetUserData } from "../hooks/useGetUserData";
 import { useUpdateUserData } from "../hooks/useUpdateUserData";
 import InputComponent from "./InputComponent";
+import {
+  UserOutlined,
+  MailOutlined,
+  FontColorsOutlined,
+  PhoneOutlined
+} from "@ant-design/icons";
 
 interface Props {
   id: string | null;
@@ -15,14 +21,14 @@ interface Props {
 type FieldStatus = "" | "error" | "warning" | undefined;
 
 const UserForm: React.FC<Props> = ({ isModalOpen, onClose, id }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<any>({
     name: "",
     username: "",
     email: "",
+    phone: ""
   });
   const [filedStatus, setFieldStatus] = useState<FieldStatus>("");
   const [messageApi, contextHolder] = message.useMessage();
-
 
   const error = () => {
     messageApi.open({
@@ -42,11 +48,17 @@ const UserForm: React.FC<Props> = ({ isModalOpen, onClose, id }) => {
   }, [userData]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+  
+    if ((name === 'name' || name === 'username') && value.trim().length > 0) {
+      setFieldStatus('');
+    }
   };
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -83,28 +95,52 @@ const UserForm: React.FC<Props> = ({ isModalOpen, onClose, id }) => {
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div>
-            <InputComponent
-              label="Name"
-              name= "name"
-              value={formData.name}
-              onChange={(e) => handleInputChange(e)}
-              status={filedStatus}
-            />
-            <InputComponent
-              label="Username"
-              name="username"
-              value={formData.username}
-              onChange={handleInputChange}
-              status={filedStatus}
-            />
-            <InputComponent
-              label="Email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-          </div>
+          <section>
+            <div className="mb-3">
+              <InputComponent
+                label="Name"
+                name="name"
+                placeholder="Mehrdad Karami"
+                value={formData.name}
+                onChange={handleInputChange}
+                status={filedStatus}
+                prefix={<UserOutlined />}
+              />
+            </div>
+            <div className="mb-3">
+              <InputComponent
+                label="Username"
+                name="username"
+                placeholder="Ash Mehr"
+                value={formData.username}
+                onChange={handleInputChange}
+                status={filedStatus}
+                prefix={<FontColorsOutlined />}
+              />
+            </div>
+            <div className="mb-3">
+              <InputComponent
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="mehrdadk.jourabi@gmail.com"
+                value={formData.email}
+                onChange={handleInputChange}
+                prefix={<MailOutlined />}
+              />
+            </div>
+            <div className="mb-3">
+              <InputComponent
+                label="Phone"
+                name="phone"
+                type="phone"
+                placeholder="+98912..."
+                value={formData.phone}
+                onChange={handleInputChange}
+                prefix={<PhoneOutlined />}
+              />
+            </div>
+          </section>
           <div className="flex gap-2 justify-end mt-5">
             <Button type="primary" danger onClick={onClose}>
               Cancel

@@ -4,7 +4,7 @@
 
 @layer base {
     html {
-      @apply  font-light bg-gray-400 m-3
+      @apply  font-light bg-gray-300 m-3
     }
   }
   

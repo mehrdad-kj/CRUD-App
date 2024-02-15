@@ -9,6 +9,8 @@ interface Props {
   className?: string;
   placeholder?: string;
   prefix?: React.ReactNode;
+  type?: string;
+  pattern?: string;
 }
 
 const InputComponent: React.FC<Props> = ({
@@ -19,12 +21,14 @@ const InputComponent: React.FC<Props> = ({
   status,
   className,
   placeholder,
-  prefix
+  prefix,
+  type,
+  pattern,
 }) => {
   const { Text } = Typography;
 
   return (
-    <div className="mb-3">
+    <div>
       <Text className="font-normal">{label}</Text>
       <Input
         value={value}
@@ -34,6 +38,8 @@ const InputComponent: React.FC<Props> = ({
         className={className}
         placeholder={placeholder}
         prefix={prefix}
+        type={type}
+        pattern={pattern}
       />
     </div>
   );

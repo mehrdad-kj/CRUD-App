@@ -5,7 +5,7 @@ import { useGetUsersData } from "../hooks/useGetUsersData";
 import Header from "../components/Header";
 import UserForm from "../components/UserForm";
 import {
-  UserOutlined,
+  SearchOutlined,
   PlusOutlined,
   EditOutlined,
   DeleteOutlined,
@@ -16,8 +16,9 @@ import InputComponent from "../components/InputComponent";
 interface DataType {
   key: string;
   name: string;
-  username: number;
+  username: string;
   email: string;
+  phone: string;
 }
 
 const HomePage: React.FC = () => {
@@ -43,6 +44,11 @@ const HomePage: React.FC = () => {
       title: "Email",
       dataIndex: "email",
       key: "email",
+    },
+    {
+      title: "Phone",
+      dataIndex: "phone",
+      key: "phone",
     },
     {
       title: "Action",
@@ -90,8 +96,8 @@ const HomePage: React.FC = () => {
     if (users) {
       if (selectedUsers.length > 0) {
         return users
-          .filter((user: any) => selectedUsers.includes(user.id))
-          .map((user: any) => ({
+          .filter((user) => selectedUsers.includes(user.id))
+          .map((user) => ({
             ...user,
             key: user.id,
           }));
@@ -100,18 +106,19 @@ const HomePage: React.FC = () => {
       if (serachInput.length > 0) {
         return users
           .filter(
-            (user: any) =>
-              user.name.includes(serachInput) ||
-              user.username.includes(serachInput) ||
-              user.email.includes(serachInput)
+            (user) =>
+              user.name.includes(serachInput.toLowerCase()) ||
+              user.username.includes(serachInput.toLowerCase()) ||
+              user.email.includes(serachInput.toLowerCase()) ||
+              user.phone.includes(serachInput)
           )
-          .map((user: any) => ({
+          .map((user) => ({
             ...user,
             key: user.id,
           }));
       }
 
-      return users.map((user: any) => ({
+      return users.map((user) => ({
         ...user,
         key: user.id,
       }));
@@ -121,7 +128,7 @@ const HomePage: React.FC = () => {
 
   const selectPptions = useMemo(() => {
     if (users) {
-      return users.map((user: any) => ({
+      return users.map((user) => ({
         label: user.name,
         value: user.id,
       }));
@@ -153,14 +160,15 @@ const HomePage: React.FC = () => {
           onChange={handleChangeSelect}
           loading={isLoading}
         />
-        <InputComponent
-          name="searchInput"
-          value={serachInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          className="flex-1"
-          placeholder="Filter users by searching them ..."
-          prefix={<UserOutlined />}
-        />
+        <div className="flex-1">
+          <InputComponent
+            name="searchInput"
+            value={serachInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Filter users by searching them ..."
+            prefix={<SearchOutlined />}
+          />
+        </div>
       </Header>
 
       {isLoading || isFetching ? (
