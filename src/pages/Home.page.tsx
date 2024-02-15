@@ -159,6 +159,9 @@ const HomePage: React.FC = () => {
           options={selectPptions}
           onChange={handleChangeSelect}
           loading={isLoading}
+          filterOption={(inputValue, option) =>
+            option?.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1
+          }
         />
         <div className="flex-1">
           <InputComponent
