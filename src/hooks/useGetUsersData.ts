@@ -7,6 +7,6 @@ const fetchUsers = () => {
 
 export const useGetUsersData = () => {
     return useQuery("getUsers", fetchUsers, {
-        select: (response: any) => response.data
+        select: (response) => response.data
     })
 }

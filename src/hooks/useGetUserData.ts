@@ -9,7 +9,7 @@ const fetchUser = ({ queryKey }: { queryKey: string[]}) => {
 export const useGetUserData = (userId: string) => {
   return useQuery(["getUser", userId], fetchUser, {
     enabled: !!userId,
-    select: (response: any) => response.data
+    select: (response) => response.data
 
   });
 };

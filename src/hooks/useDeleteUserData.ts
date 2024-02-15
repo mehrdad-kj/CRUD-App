@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "react-query";
 import { request } from "../utils/axios-utils";
 
-const deleteUser = (id: any) => {
+const deleteUser = (id: string) => {
   return request({ url: `/users/${id}`, method: "delete" });
 };
 

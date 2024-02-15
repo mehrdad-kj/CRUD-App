@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "react-query";
-import { request } from "../utils/axios-utils";
+import { User, request } from "../utils/axios-utils";
 
-const addUser = (user: any) => {
+const addUser = (user: User) => {
   return request({ url: "/users", method: "post", data: user });
 };
 

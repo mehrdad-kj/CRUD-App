@@ -1,10 +1,19 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
 
-const client = axios.create({ baseURL: 'http://localhost:5000' })
+export interface User {
+    id: string;
+    name: string;
+    username: string;
+    email: string;
+    phone: string;
+  }
+  
 
-export const request = async ({ ...options }) => {
-    const onSuccess = (response: AxiosResponse) => response
-    const onError = (error: AxiosError) => error
+const client = axios.create({ baseURL: 'http://localhost:5000' });
+
+export const request = async (options: AxiosRequestConfig): Promise<AxiosResponse<User[]>> => {
+    const onSuccess = (response: AxiosResponse) => response;
+    const onError = (error: AxiosError) => Promise.reject(error);
 
     try {
         const response = await client(options);
@@ -12,4 +21,4 @@ export const request = async ({ ...options }) => {
     } catch (error: any) {
         return onError(error);
     }
-}
+};
