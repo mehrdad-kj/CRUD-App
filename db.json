@@ -1,3 +1,74 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe ",
+      "username": "johndoe",
+      "email": "john.doe@example.com",
+      "phone": "+1234567890"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "username": "janesmith",
+      "email": "jane.smith@example.com",
+      "phone": "+1987654321"
+    },
+    {
+      "id": "3",
+      "name": "Michael Johnson",
+      "username": "michaelj",
+      "email": "michael.johnson@example.com",
+      "phone": "+1122334455"
+    },
+    {
+      "id": "4",
+      "name": "Emily Brown",
+      "username": "emilyb",
+      "email": "emily.brown@example.com",
+      "phone": "+1555666777"
+    },
+    {
+      "id": "5",
+      "name": "David Lee",
+      "username": "davidl",
+      "email": "david.lee@example.com",
+      "phone": "+1888888888"
+    },
+    {
+      "id": "6",
+      "name": "Sarah Wilson",
+      "username": "sarahw",
+      "email": "sarah.wilson@example.com",
+      "phone": "+1444444444"
+    },
+    {
+      "id": "7",
+      "name": "Robert Taylor",
+      "username": "robertt",
+      "email": "robert.taylor@example.com",
+      "phone": "+1777777777"
+    },
+    {
+      "id": "8",
+      "name": "Amanda Martinez",
+      "username": "amandam",
+      "email": "amanda.martinez@example.com",
+      "phone": "+1666666666"
+    },
+    {
+      "id": "9",
+      "name": "Christopher Rodriguez",
+      "username": "chrisr",
+      "email": "christopher.rodriguez@example.com",
+      "phone": "+1999999999"
+    },
+    {
+      "id": "10",
+      "name": "Jessica Garcia",
+      "username": "jessicag",
+      "email": "jessica.garcia@example.com",
+      "phone": "+1888888888"
+    }
+  ]
 }
