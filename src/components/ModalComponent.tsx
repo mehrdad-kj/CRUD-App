@@ -4,12 +4,13 @@ interface Props {
     isModalOpen: boolean;
     onClose: () => void;
     children: React.ReactNode;
+    title: string;
 }
 
-const ModalComponent: React.FC<Props> = ({ isModalOpen, onClose, children }) => {
+const ModalComponent: React.FC<Props> = ({ isModalOpen, onClose, children, title }) => {
 
     return (
-        <Modal title="Add User" open={isModalOpen} onCancel={onClose} footer={false}>
+        <Modal title={title} open={isModalOpen} onCancel={onClose} footer={false}>
             {children}
         </Modal>
     )
