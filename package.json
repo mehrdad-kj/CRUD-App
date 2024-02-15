@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"vite\" \"json-server --watch db.json --port 5000\"",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && json-server --watch db.json --port 5000",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "postbuild": "json-server --watch db.json --port 5000"
+    "preview": "vite preview"
   },
   "dependencies": {
     "antd": "^5.14.1",
