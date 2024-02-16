@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + React Query + Antd + Axios + Json-Server 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a CRUD app that shows fake users data with help of json-server in a table. All CRUD actions are available in this app. 
+Also you can filter the table in 2 ways. one with a input that filters table based on what you typed, and another one is 
+a filter by select.
 
-Currently, two official plugins are available:
+-- clone app
+-- npm install
+-- npm run dev 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# note1: I set up running the json server with the npm run dev so it is not needed to run json server seperately. 
 
-## Expanding the ESLint configuration
+# note 2: I tried to deploy the app with gh-pages but apperantly json-server cant be runned dynamicly. but after you run the app you can see it online with the following link:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+https://mehrdad-kj.github.io/CRUD-App
